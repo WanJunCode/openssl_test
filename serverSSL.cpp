@@ -119,8 +119,7 @@ int main(int argc, char **argv)
  
         if (len <= 0) {
             printf
-                ("消息'%s'发送失败！错误代码是%d，错误信息是'%s'\n",
-                 buf, errno, strerror(errno));
+                ("消息'%s'发送失败！错误代码是%d，错误信息是'%s'\n", buf, errno, strerror(errno));
             goto finish;
         } else
             printf("消息'%s'发送成功，共发送了%d个字节！\n",
@@ -130,12 +129,9 @@ int main(int argc, char **argv)
         /* 接收客户端的消息 */
         len = SSL_read(ssl, buf, MAXBUF);
         if (len > 0)
-            printf("接收消息成功:'%s'，共%d个字节的数据\n",
-                   buf, len);
+            printf("接收消息成功:'%s'，共%d个字节的数据\n",buf, len);
         else
-            printf
-                ("消息接收失败！错误代码是%d，错误信息是'%s'\n",
-                 errno, strerror(errno));
+            printf("消息接收失败！错误代码是%d，错误信息是'%s'\n",errno, strerror(errno));
         /* 处理每个新连接上的数据收发结束 */
       finish:
         /* 关闭 SSL 连接 */

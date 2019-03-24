@@ -16,7 +16,8 @@ void ShowCerts(SSL * ssl)
 {
     X509 *cert;
     char *line;
- 
+    
+    // 从服务器接收 公钥
     cert = SSL_get_peer_certificate(ssl);
     if (cert != NULL) {
         printf("数字证书信息:\n");
@@ -26,7 +27,7 @@ void ShowCerts(SSL * ssl)
         line = X509_NAME_oneline(X509_get_issuer_name(cert), 0, 0);
         printf("颁发者: %s\n", line);
         free(line);
-       X509_free(cert);
+        X509_free(cert);
     } else
         printf("无证书信息！\n");
 }

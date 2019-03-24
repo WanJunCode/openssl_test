@@ -14,4 +14,4 @@ ${SERVER}: serverSSL.o
 	${CC} ${Cflages} $< ${library} -o $@
 
 clean:
-	${RM} ${SERVER} ${CLIENT} *.pem *.o
+	${RM} ${SERVER} ${CLIENT} *.pem *.o .vscode/
