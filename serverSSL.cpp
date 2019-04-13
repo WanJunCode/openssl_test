@@ -73,8 +73,7 @@ int main(int argc, char **argv)
     my_addr.sin_port = htons(myport);
     my_addr.sin_addr.s_addr = INADDR_ANY;
  
-    if (bind(sockfd, (struct sockaddr *) &my_addr, sizeof(struct sockaddr))
-        == -1) {
+    if ( bind(sockfd, (struct sockaddr *) &my_addr, sizeof(struct sockaddr)) == -1) {
         perror("bind");
         exit(1);
     } else
@@ -95,11 +94,12 @@ int main(int argc, char **argv)
                     &len)) == -1) {
             perror("accept");
             exit(errno);
-        } else
+        } else {
             printf("server: got connection from %s, port %d, socket %d\n",
-                   inet_ntoa(their_addr.sin_addr),
-                   ntohs(their_addr.sin_port), new_fd);
- 
+            inet_ntoa(their_addr.sin_addr),
+            ntohs(their_addr.sin_port), new_fd);
+        }
+            
         /* 基于 ctx 产生一个新的 SSL */
         ssl = SSL_new(ctx);
         /* 将连接用户的 socket 加入到 SSL */
